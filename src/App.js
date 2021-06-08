@@ -10,9 +10,27 @@ const Button = ({ handleClick, text }) => (
   </button>
 );
 
-const Statistic = ({ label, value }) => (
-  <p>{label} {value}</p>
-);
+const Statistic = ({ label, value, all }) => {
+  if (all > 0) {
+    return (
+      <p>{label} {value}</p>
+    );
+  }
+  return (
+    <></>
+  );
+}
+
+const NoFeedback = ({ all }) => {
+  if (all > 0) {
+    return (
+      <></>
+    );
+  }
+  return (
+    <p>No feedback given</p>
+  )
+}
 
 const App = () => {
   //save clicks of each button to its own state 
@@ -43,12 +61,13 @@ const App = () => {
       <Button handleClick={handleNeutralClick} text='neutral' />
       <Button handleClick={handleBadClick} text='bad' />
       <Header title="statistics" />
-      <Statistic label="good" value={good} />
-      <Statistic label="neutral" value={neutral} />
-      <Statistic label="bad" value={bad} />
-      <Statistic label="all" value={all} />
-      <Statistic label="average" value={average} />
-      <Statistic label="positive" value={positive + "%"} />
+      <NoFeedback all={all}/>
+      <Statistic label="good" value={good} all={all} />
+      <Statistic label="neutral" value={neutral} all={all} />
+      <Statistic label="bad" value={bad} all={all} />
+      <Statistic label="all" value={all} all={all} />
+      <Statistic label="average" value={average} all={all} />
+      <Statistic label="positive" value={positive + "%"} all={all} />
     </div>
   );
 }
