@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 
+const Header = ({title}) => (
+  <h1>{title}</h1>
+);
+
 const Button = ({ handleClick, text}) => (
   <button onClick={handleClick}>
     {text}
@@ -29,11 +33,11 @@ const App = () => {
 
   return (
     <div>
-      <h1>give feedback</h1>
+      <Header title="give feedback" />
       <Button handleClick={handleGoodClick} text='good' />
       <Button handleClick={handleNeutralClick} text='neutral' />
       <Button handleClick={handleBadClick} text='bad' />
-      <h1>statistics</h1>
+      <Header title="statistics" />
       <p>good {good}</p>
       <p>neutral {neutral}</p>
       <p>bad {bad}</p>
